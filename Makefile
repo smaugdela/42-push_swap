@@ -6,7 +6,7 @@
 #    By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 18:52:14 by smagdela          #+#    #+#              #
-#    Updated: 2021/09/15 12:34:36 by smagdela         ###   ########.fr        #
+#    Updated: 2021/09/16 10:38:28 by smagdela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,11 @@ INCD	=	includes/
 SRCD	=	sources/
 OBJD	=	objects/
 
-LIBFT	=	${addprefix ${LIBFTD},libft.a}
+LIBFT	:=	${addprefix ${LIBFTD},libft.a}
 SRCS	=	push_swap.c \
 
-SRCS	=	${addprefix ${SRCD},${SRCS}}
-OBJS	=	${addprefix ${OBJD},${SRCS:.c=.o}}
+OBJS	:=	${addprefix ${OBJD},${SRCS:.c=.o}}
+SRCS	:=	${addprefix ${SRCD},${SRCS}}
 
 CC	=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -36,11 +36,11 @@ LIBFTMK	=	make -C ${LIBFTD}
 #############
 
 ${NAME}:	${LIBFT} ${OBJS}
-	${CC} ${CFLAG} ${OBJS} -o $@
+	${CC} ${CFLAG} ${LIBFT} ${OBJS} -o $@
 
 ${OBJD}%.o:	${SRCD}%.c ${LIBFT}
 	mkdir -p ${OBJD}
-	${CC} -c $@ ${CFLAGS} -I${INCD} $<
+	${CC} -c -o $@ ${CFLAGS} -I${INCD} $<
 
 ${LIBFT}:
 	${LIBFTMK} all
