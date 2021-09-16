@@ -6,7 +6,7 @@
 #    By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 18:52:14 by smagdela          #+#    #+#              #
-#    Updated: 2021/09/16 10:38:28 by smagdela         ###   ########.fr        #
+#    Updated: 2021/09/16 14:51:56 by smagdela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,7 @@ SRCD	=	sources/
 OBJD	=	objects/
 
 LIBFT	:=	${addprefix ${LIBFTD},libft.a}
-SRCS	=	push_swap.c \
-
+SRCS	=	push_swap.c ft_errors.c
 OBJS	:=	${addprefix ${OBJD},${SRCS:.c=.o}}
 SRCS	:=	${addprefix ${SRCD},${SRCS}}
 
@@ -40,7 +39,7 @@ ${NAME}:	${LIBFT} ${OBJS}
 
 ${OBJD}%.o:	${SRCD}%.c ${LIBFT}
 	mkdir -p ${OBJD}
-	${CC} -c -o $@ ${CFLAGS} -I${INCD} $<
+	${CC} -c -o $@ ${CFLAGS} -I${INCD} -I${LIBFTD} $<
 
 ${LIBFT}:
 	${LIBFTMK} all
