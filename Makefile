@@ -26,7 +26,7 @@ SRCS	=	push_swap.c ft_errors.c
 OBJS	:=	${addprefix ${OBJD},${SRCS:.c=.o}}
 SRCS	:=	${addprefix ${SRCD},${SRCS}}
 
-CC	=	gcc
+CC	=	clang
 CFLAGS	=	-Wall -Wextra -Werror
 LIBFTMK	=	make -C ${LIBFTD}
 
@@ -35,24 +35,23 @@ LIBFTMK	=	make -C ${LIBFTD}
 #############
 
 ${NAME}:	${LIBFT} ${OBJS}
-	${CC} ${CFLAG} ${LIBFT} ${OBJS} -o $@
+	${CC} ${CFLAG} ${OBJS} ${LIBFT} -o $@
 
 ${OBJD}%.o:	${SRCD}%.c ${LIBFT}
 	mkdir -p ${OBJD}
 	${CC} -c -o $@ ${CFLAGS} -I${INCD} -I${LIBFTD} $<
 
 ${LIBFT}:
-	${LIBFTMK} all
 	${LIBFTMK} bonus
 
 all:	${NAME}
 
 clean:
-	rm -rf ${OBJD}
+	-rm -rf ${OBJD}
 	${LIBFTMK} clean
 
 fclean:	clean
-	rm ${NAME}
+	-rm ${NAME}
 	${LIBFTMK} fclean
 
 re:		fclean all
