@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:46:57 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/20 11:26:23 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/20 12:19:40 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ typedef struct s_stack
 }	t_stack;
 
 int	ft_error(int argc, char **argv);
+int	ft_operator(t_stack stack_a, t_stack stack_b, char *operation);
 
 #endif
