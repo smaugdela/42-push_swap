@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:46:57 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/20 10:47:30 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/20 11:26:23 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 # include <stdint.h>
 
 /*   /!\ ATTENTION Supprimer cet include ATTENTION /!\   */
-
-typedef	struct s_stack
+typedef struct s_stack
 {
 	size_t	len;
 	int		*list;
