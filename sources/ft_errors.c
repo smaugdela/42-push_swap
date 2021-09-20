@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 12:17:27 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/17 16:40:23 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/20 17:36:30 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_error(int argc, char **argv)
 	int	j;
 
 	if (argc <= 1)
-		return (ft_print());
+		return (42);
 	i = 0;
 	while (++i < argc)
 	{

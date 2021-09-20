@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 11:30:20 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/20 14:19:22 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/20 17:47:17 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static void	ft_rot(t_stack stack)
 	int	i;
 	int	tmp_new;
 	int	tmp_old;
-	
+
 	i = *stack.len - 1;
 	tmp_old = stack.list[i];
 	stack.list[i] = stack.list[0];
-	while(--i >= 0)
+	while (--i >= 0)
 	{
 		tmp_new = stack.list[i];
 		stack.list[i] = tmp_old;
@@ -58,18 +58,20 @@ static void	ft_revrot(t_stack stack)
 static void	ft_push(t_stack stack_1, t_stack stack_2)
 {
 	size_t	i;
-	int		tmp;
+	int		tmp_old;
+	int		tmp_new;
 
 	if (*stack_2.len == 0)
 		return ;
-	tmp = stack_1.list[0];
+	tmp_old = stack_1.list[0];
 	stack_1.list[0] = stack_2.list[0];
 	++(*stack_1.len);
 	i = 0;
 	while (++i < *stack_1.len)
 	{
-		stack_1.list[i] = tmp;
-		tmp = stack_1.list[i + 1];
+		tmp_new = stack_1.list[i];
+		stack_1.list[i] = tmp_old;
+		tmp_old = tmp_new;
 	}
 	--(*stack_2.len);
 	i = 0;
@@ -85,7 +87,7 @@ int	ft_operator(t_stack stack_a, t_stack stack_b, char *operation)
 	if (ft_strncmp(operation, "sa", ft_strlen(operation)) == 0)
 		ft_swap(stack_a);
 	else if (ft_strncmp(operation, "sb", ft_strlen(operation)) == 0)
-		ft_swap(stack_b);		
+		ft_swap(stack_b);
 	else if (ft_strncmp(operation, "ss", ft_strlen(operation)) == 0)
 	{
 		ft_swap(stack_a);
@@ -112,9 +114,7 @@ int	ft_operator(t_stack stack_a, t_stack stack_b, char *operation)
 	else if (ft_strncmp(operation, "pa", ft_strlen(operation)) == 0)
 		ft_push(stack_a, stack_b);
 	else if (ft_strncmp(operation, "pb", ft_strlen(operation)) == 0)
-	{
 		ft_push(stack_b, stack_a);
-	}
 	else
 		return (42);
 	ft_putstr_fd(operation, 1);
