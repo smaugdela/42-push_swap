@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:34:02 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/22 15:19:23 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:53:22 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,58 @@ void	liberator(t_stack stack_a, t_stack stack_b)
 	stack_b.list = NULL;
 }
 
-/*
-char	*ss(t_stack stack_1, t_stack stack_2)
+void	double_s(t_stack stack_1, t_stack stack_2)
 {
-	if (s(stack_1) == NULL)
-		return (NULL);
-	if (s(stack_2) == NULL)
-		return (ft_append("s", stack_1.name));
-	return ("ss");
+	t_link	*link;
+	int		tmp;
+
+	if (stack_1.len <= 1 || stack_2.len <= 1)
+		return ;
+	link = stack_1.list;
+	tmp = link->value;
+	link->value = link->next->value;
+	link->next->value = tmp;
+	link = stack_2.list;
+	tmp = link->value;
+	link->value = link->next->value;
+	link->next->value = tmp;
+	op_printer("ss", '\0');
 }
 
-char	*rr(t_stack stack_1, t_stack stack_2)
+void	double_r(t_stack stack_1, t_stack stack_2)
 {
-	if (r(stack_1) == NULL)
-		return (NULL);
-	if (r(stack_2) == NULL)
-		return (ft_append("r", stack_1.name));
-	return ("rr");
+	t_link	*link;
+
+	if (stack_1.len < 2 || stack_2.len < 2)
+		return ;
+	link = stack_1.list;
+	link->previous = lst_last(stack_1.list);
+	link->previous->next = link;
+	link->next->previous = NULL;
+	link->next = NULL;
+	link = stack_2.list;
+	link->previous = lst_last(stack_2.list);
+	link->previous->next = link;
+	link->next->previous = NULL;
+	link->next = NULL;
+	op_printer("rr", '\0');
 }
 
-char	*rrr(t_stack stack_1, t_stack stack_2)
+void	double_rr(t_stack stack_1, t_stack stack_2)
 {
-	if (revr(stack_1) == NULL)
-		return (NULL);
-	if (revr(stack_2) == NULL)
-		return (ft_append("rr", stack_1.name));
-	return ("rrr");
+	t_link	*link;
+	
+	if (stack_1.len < 2)
+		return ;
+	link = lst_last(stack_1.list);
+	link->previous->next = NULL;
+	link->previous = NULL;
+	link->next = stack_1.list;
+	link->next->previous = link;
+	link = lst_last(stack_2.list);
+	link->previous->next = NULL;
+	link->previous = NULL;
+	link->next = stack_2.list;
+	link->next->previous = link;
+	op_printer("rrr", '\0');
 }
-*/

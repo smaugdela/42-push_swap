@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/22 15:13:23 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:56:44 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ https://www.jesuisundev.com/comprendre-les-algorithmes-de-tri-en-7-minutes/
 static t_stack	ft_init(char **argv, int len, char name)
 {
 	t_stack	stack;
+	t_link	*link;
 	int		i;
 
 	stack.name = name;
@@ -32,6 +33,7 @@ static t_stack	ft_init(char **argv, int len, char name)
 		stack.list = NULL;
 	else
 	{
+		/*
 		stack.list = (t_link *)malloc((len + 1) * sizeof(t_link));
 		if (stack.list == NULL)
 			return (stack);
@@ -46,6 +48,9 @@ static t_stack	ft_init(char **argv, int len, char name)
 		i = -1;
 		while (++i < len)
 			stack.list[i].value = ft_atoi(argv[i + 1]);
+			*/
+
+		
 	}
 	return (stack);
 }
@@ -68,49 +73,48 @@ int	main(int argc, char **argv)
 	}
 
 	ft_print_stacks(a, b);
+	
 	s(a);
-	ft_putstr_fd("sa\n", 1);
-	ft_print_stacks(a, b);
-/*
-	ft_putstr_free(p(b, a), 1);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(p(b, a), 1);
+	p(b, a);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(s(a), 1);
+	p(b, a);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(s(b), 1);
+	s(a);
+	ft_print_stacks(a, b);
+
+	s(b);
 	ft_print_stacks(a, b);
 	
-	ft_putstr_free(ss(a, b), 1);
+	double_s(a, b);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(r(a), 1);
+	r(a);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(r(b), 1);
+	r(b);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(rr(a, b), 1);
+	double_r(a, b);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(p(a, b), 1);
+	p(a, b);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(p(b, a), 1);
+	p(b, a);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(revr(a), 1);
+	rr(a);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(revr(b), 1);
+	rr(b);
 	ft_print_stacks(a, b);
 
-	ft_putstr_free(rrr(a, b), 1);
+	double_rr(a, b);
 	ft_print_stacks(a, b);
-*/
 
 	liberator(a, b);
 	return (0);
