@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 12:17:27 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/20 17:36:30 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/22 14:33:45 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	ft_in_lst(char *str, char **list)
 {
 	while (*list)
 	{
-		if (strncmp(str, *list, ft_strlen(str) + 1) == 0)
+		if (ft_atoi(str) == ft_atoi(*list))
 			return (1);
 		++list;
 	}
