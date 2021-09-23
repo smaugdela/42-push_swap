@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/23 15:07:20 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:03:54 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	main(int argc, char **argv)
 
 	s(b);
 	ft_print_stacks(a, b);
-	
+
 	double_s(a, b);
 	ft_print_stacks(a, b);
 
@@ -110,6 +110,15 @@ int	main(int argc, char **argv)
 	ft_print_stacks(a, b);
 
 	p(a, b);
+	ft_print_stacks(a, b);
+
+	p(a, b);
+	ft_print_stacks(a, b);
+
+	p(a, b);
+	ft_print_stacks(a, b);
+
+	p(b, a);
 	ft_print_stacks(a, b);
 
 	p(b, a);

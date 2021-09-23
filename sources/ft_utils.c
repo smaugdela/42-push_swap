@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:34:02 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/23 15:09:30 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:03:11 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,13 @@ void	double_r(t_stack *stack_1, t_stack *stack_2)
 		return ;
 	link = stack_1->list;
 	link->previous = lst_last(stack_1->list);
+	stack_1->list = stack_1->list->next;
 	link->previous->next = link;
 	link->next->previous = NULL;
 	link->next = NULL;
 	link = stack_2->list;
 	link->previous = lst_last(stack_2->list);
+	stack_2->list = stack_2->list->next;
 	link->previous->next = link;
 	link->next->previous = NULL;
 	link->next = NULL;
@@ -98,10 +100,12 @@ void	double_rr(t_stack *stack_1, t_stack *stack_2)
 	link->previous = NULL;
 	link->next = stack_1->list;
 	link->next->previous = link;
+	stack_1->list = link;
 	link = lst_last(stack_2->list);
 	link->previous->next = NULL;
 	link->previous = NULL;
 	link->next = stack_2->list;
 	link->next->previous = link;
+	stack_2->list = link;
 	op_printer("rrr", '\0');
 }
