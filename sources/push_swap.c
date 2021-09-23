@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/23 17:03:54 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:31:16 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_stack	ft_init(char **argv, int len, char name)
 		stack.list = NULL;
 	else
 	{
-		stack.list = (t_link *)malloc((len + 1) * sizeof(t_link));
+		stack.list = (t_link *)malloc((len + 2) * sizeof(t_link));
 		if (len == 0)
 			stack.list = NULL;
 		if (stack.list == NULL)
