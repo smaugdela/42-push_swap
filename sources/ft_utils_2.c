@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:44:06 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/24 11:50:25 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/24 14:32:30 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,42 @@ t_link	*lst_first(t_link *list)
 		list = list->previous;
 	}
 	return (list);
+}
+
+static t_link	*ft_parser(char **argv, int len)
+{
+	t_link	*link;
+	t_link	*previous_link;
+
+	previous_link = NULL;
+	while (len-- > 0 && ++argv != NULL)
+	{
+		link = (t_link *)malloc(1 * sizeof(t_link));
+		if (link == NULL)
+			return (NULL);
+		link->value = ft_atoi(*argv);
+		link->previous = previous_link;
+		if (previous_link != NULL)
+			previous_link->next = link;
+		previous_link = link;
+	}
+	link->next = NULL;
+	return (lst_first(link));
+}
+
+t_stack	*ft_init(char **argv, int len, char name)
+{
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack != NULL)
+	{
+		stack->name = name;
+		stack->len = len;
+		if (len == 0)
+			stack->list = NULL;
+		else
+			stack->list = ft_parser(argv, len);
+	}
+	return (stack);
 }

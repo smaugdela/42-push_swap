@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:46:57 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/24 11:43:09 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/24 14:44:43 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-# include <stdint.h>
 
-typedef struct	s_link
+typedef struct s_link
 {
 	int				value;
 	struct s_link	*previous;
@@ -31,6 +30,7 @@ typedef struct s_stack
 }	t_stack;
 
 int		ft_error(int argc, char **argv);
+t_stack	*ft_init(char **argv, int len, char name);
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
 void	liberator(t_stack *stack_a, t_stack *stack_b);
 t_link	*lst_last(t_link *link);
@@ -44,5 +44,7 @@ void	rr(t_stack *stack);
 void	double_s(t_stack *stack_1, t_stack *stack_2);
 void	double_r(t_stack *stack_1, t_stack *stack_2);
 void	double_rr(t_stack *stack_1, t_stack *stack_2);
+
+void	sorter(t_stack *stack_a, t_stack *stack_b);
 
 #endif

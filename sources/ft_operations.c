@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 11:30:20 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/24 11:05:33 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/24 14:01:09 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	r(t_stack *stack)
 void	rr(t_stack *stack)
 {
 	t_link	*link;
-	
+
 	if (stack->len < 2)
 		return ;
 	link = lst_last(stack->list);
@@ -70,14 +70,14 @@ void	p(t_stack *stack_1, t_stack *stack_2)
 	if (stack_2->len == 0)
 		return ;
 	link = stack_2->list;
-	if (stack_2->len == 1)
+	if (stack_2->len-- == 1)
 		stack_2->list = NULL;
 	else
 	{
 		stack_2->list = stack_2->list->next;
 		stack_2->list->previous = NULL;
 	}
-	if (stack_1->len == 0 || stack_1->list == NULL)
+	if (stack_1->len++ == 0 || stack_1->list == NULL)
 	{
 		stack_1->list = link;
 		link->next = NULL;
@@ -88,7 +88,5 @@ void	p(t_stack *stack_1, t_stack *stack_2)
 		stack_1->list->previous = link;
 		stack_1->list = link;
 	}
-	stack_2->len = stack_2->len - 1;
-	stack_1->len = stack_1->len + 1;
 	op_printer("p", stack_1->name);
 }
