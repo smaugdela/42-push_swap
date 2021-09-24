@@ -6,19 +6,30 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:44:06 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/22 17:46:57 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/24 11:50:25 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_link	*lst_last(t_link *link)
+t_link	*lst_last(t_link *list)
 {
-	if (link == NULL)
+	if (list == NULL)
 		return (NULL);
-	while (link->next != NULL)
+	while (list->next != NULL)
 	{
-		link = link->next;
+		list = list->next;
 	}
-	return (link);
+	return (list);
+}
+
+t_link	*lst_first(t_link *list)
+{
+	if (list == NULL)
+		return (NULL);
+	while (list->previous != NULL)
+	{
+		list = list->previous;
+	}
+	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/23 17:31:16 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/24 12:12:51 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,36 @@ https://www.jesuisundev.com/comprendre-les-algorithmes-de-tri-en-7-minutes/
 
 #include "push_swap.h"
 
-static t_stack	ft_init(char **argv, int len, char name)
+static t_stack	*ft_init(char **argv, int len, char name)
 {
-	t_stack	stack;
+	t_stack	*stack;
 	t_link	*link;
-	int		i;
+	t_link	*previous_link;
 
-	stack.name = name;
-	stack.len = len;
-	if (argv == NULL || len == 0)
-		stack.list = NULL;
-	else
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack != NULL)
 	{
-		stack.list = (t_link *)malloc((len + 2) * sizeof(t_link));
+		stack->name = name;
+		stack->len = len;
 		if (len == 0)
-			stack.list = NULL;
-		if (stack.list == NULL)
-			return (stack);
-		i = 0;
-		link = stack.list;
-		link->previous = NULL;
-		while (i++ < len)
+			stack->list = NULL;
+		else
 		{
-			link->value = ft_atoi(argv[i]);
-			link->next = link + 1;
-			link->next->previous = link;
-			link = link->next;
+			previous_link = NULL;
+			while (len-- > 0 && ++argv != NULL)
+			{
+				link = (t_link *)malloc(1 * sizeof(t_link));
+				if (link == NULL)
+					return (stack);
+				link->value = ft_atoi(*argv);
+				link->previous = previous_link;
+				if (previous_link != NULL)
+					previous_link->next = link;
+				previous_link = link;
+			}
+			link->next = NULL;
+			stack->list = lst_first(link);
 		}
-		link->previous->next = NULL;
-		link = NULL;
 	}
 	return (stack);
 }
@@ -63,25 +64,16 @@ int	main(int argc, char **argv)
 		return (42);
 	if (argc <= 2)
 		return (0);
-	a = (t_stack *)malloc(sizeof(t_stack));
+	a = ft_init(argv, argc - 1, 'a');
 	if (a == NULL)
 		return (42);
-	b = (t_stack *)malloc(sizeof(t_stack));
-	if (b == NULL)
-	{
-		free(a);
-		return (42);
-	}
-	*a = ft_init(argv, argc - 1, 'a');
-	*b = ft_init(NULL, 0, 'b');
-	if (a->list == NULL)
+	b = ft_init(NULL, 0, 'b');
+	if (b == NULL || a->list == NULL)
 	{
 		liberator(a, b);
 		return (42);
 	}
-
 	ft_print_stacks(a, b);
-	
 	s(a);
 	ft_print_stacks(a, b);
 

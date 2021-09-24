@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:46:57 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/23 17:32:26 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/24 11:43:09 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		ft_error(int argc, char **argv);
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
 void	liberator(t_stack *stack_a, t_stack *stack_b);
 t_link	*lst_last(t_link *link);
+t_link	*lst_first(t_link *list);
 
 void	op_printer(char *op, char name);
 void	s(t_stack *stack);
