@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorter.c                                           :+:      :+:    :+:   */
+/*   ft_printer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/24 13:23:37 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/24 14:47:01 by smagdela         ###   ########.fr       */
+/*   Created: 2021/09/25 11:21:22 by smagdela          #+#    #+#             */
+/*   Updated: 2021/09/25 12:11:42 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sorter(t_stack *a, t_stack *b)
-{
-}
-
-/*
-Operations tester,
-Uncomment if you want to test operations and to print stacks during process.
-
-void	sorter(t_stack *a, t_stack *b)
+void	ft_printer(t_stack *a, t_stack *b)
 {
 	s(a);
 	ft_print_stacks(a, b);
@@ -57,4 +49,3 @@ void	sorter(t_stack *a, t_stack *b)
 	double_rr(a, b);
 	ft_print_stacks(a, b);
 }
-*/

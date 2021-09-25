@@ -6,7 +6,7 @@
 #    By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 18:52:14 by smagdela          #+#    #+#              #
-#    Updated: 2021/09/24 14:44:42 by smagdela         ###   ########.fr        #
+#    Updated: 2021/09/25 12:14:27 by smagdela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCD	=	sources/
 OBJD	=	objects/
 
 LIBFT	:=	${addprefix ${LIBFTD},libft.a}
-SRCS	=	push_swap.c ft_errors.c ft_utils.c ft_utils_2.c ft_operations.c sorter.c
+SRCS	=	push_swap.c ft_errors.c ft_utils.c ft_utils_2.c ft_operations.c ft_printer.c backtracking.c backtracking_2.c
 OBJS	:=	${addprefix ${OBJD},${SRCS:.c=.o}}
 SRCS	:=	${addprefix ${SRCD},${SRCS}}
 

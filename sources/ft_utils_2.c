@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:44:06 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/24 14:32:30 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/25 11:28:21 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,19 @@ t_stack	*ft_init(char **argv, int len, char name)
 			stack->list = ft_parser(argv, len);
 	}
 	return (stack);
+}
+
+int	ft_is_sorted(t_stack *stack)
+{
+	t_link	*link;
+
+	link = stack->list;
+	
+	while (link->next != NULL)
+	{
+		if(link->value >= link->next->value)
+			return (0);
+		link = link->next;
+	}
+	return (1);
 }
