@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 13:23:37 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/28 11:20:58 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/28 12:03:37 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,12 @@ static void	ft_iter(t_stack *sol_pot)
 		operation->next = NULL;
 		operation->value = 0;
 		operation->previous->next = operation;
+		sol_pot->len = sol_pot->len + 1;
 	}
 	return (sol_pot);
 }
 
-static t_stack	*ft_gen_sol(size_t len_max, t_stack *sol_pot)
+static t_stack	*ft_gen_sol(size_t lim, t_stack *sol_pot, t_stack *a)
 {
 	if (sol_pot->list == NULL)
 	{
@@ -92,10 +93,10 @@ static t_stack	*ft_gen_sol(size_t len_max, t_stack *sol_pot)
 		sol_pot->list->value = 0;
 		sol_pot->len = 1;
 	}
-	while (sol_pot->len <= len_max)
+	while (sol_pot->len <= lim)
 	{
 		ft_iter(sol_pot);
-		if (ft_constraints(sol_pot) == 1)
+		if (ft_constraints(sol_pot, a->len) == 1)
 			return (sol_pot);
 	}
 	free (sol_pot);
