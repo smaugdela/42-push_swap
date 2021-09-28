@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/24 14:44:08 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/28 09:45:14 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	main(int argc, char **argv)
 		return (42);
 	}
 	ft_print_stacks(a, b);
-	sorter(a, b);
+	if (ft_is_sorted(a) == 0)
+		ft_backtracking(a, b);
 	liberator(a, b);
 	return (0);
 }
