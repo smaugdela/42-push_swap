@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 12:12:55 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/25 12:26:08 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/28 08:53:43 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_submit(t_stack *a, t_stack *b, char *sol_pot)
 {
+	//Doit etre protege des stacks NULL;
 	//Renvoi 1 si a est triee, 0 sinon.
 	//Utilise une association de chqaue caractere de sol_pot
 	// avec une operation propre. Cette association ets la meme

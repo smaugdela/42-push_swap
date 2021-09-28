@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:34:02 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/24 14:44:04 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/28 09:00:00 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void	double_s(t_stack *stack_1, t_stack *stack_2)
 	tmp = link->value;
 	link->value = link->next->value;
 	link->next->value = tmp;
-	op_printer("ss", '\0');
+	if (stack_1->name == 'a' || stack_1->name == 'b')
+		op_printer("ss", '\0');
 }
 
 void	double_r(t_stack *stack_1, t_stack *stack_2)
@@ -109,7 +110,8 @@ void	double_r(t_stack *stack_1, t_stack *stack_2)
 	link->previous->next = link;
 	link->next->previous = NULL;
 	link->next = NULL;
-	op_printer("rr", '\0');
+	if (stack_1->name == 'a' || stack_1->name == 'b')
+		op_printer("rr", '\0');
 }
 
 void	double_rr(t_stack *stack_1, t_stack *stack_2)
@@ -134,5 +136,6 @@ void	double_rr(t_stack *stack_1, t_stack *stack_2)
 	link->next = stack_2->list;
 	link->next->previous = link;
 	stack_2->list = link;
-	op_printer("rrr", '\0');
+	if (stack_1->name == 'a' || stack_1->name == 'b')
+		op_printer("rrr", '\0');
 }

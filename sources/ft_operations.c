@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 11:30:20 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/24 14:01:09 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/28 08:59:08 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	s(t_stack *stack)
 	tmp = link->value;
 	link->value = link->next->value;
 	link->next->value = tmp;
-	op_printer("s", stack->name);
+	if (stack->name == 'a' || stack->name == 'b')
+		op_printer("s", stack->name);
 }
 
 void	r(t_stack *stack)
@@ -45,7 +46,8 @@ void	r(t_stack *stack)
 	link->previous->next = link;
 	link->next->previous = NULL;
 	link->next = NULL;
-	op_printer("r", stack->name);
+	if (stack->name == 'a' || stack->name == 'b')
+		op_printer("r", stack->name);
 }
 
 void	rr(t_stack *stack)
@@ -60,7 +62,8 @@ void	rr(t_stack *stack)
 	link->next = stack->list;
 	link->next->previous = link;
 	stack->list = link;
-	op_printer("rr", stack->name);
+	if (stack->name == 'a' || stack->name == 'b')
+		op_printer("rr", stack->name);
 }
 
 void	p(t_stack *stack_1, t_stack *stack_2)
@@ -88,5 +91,6 @@ void	p(t_stack *stack_1, t_stack *stack_2)
 		stack_1->list->previous = link;
 		stack_1->list = link;
 	}
-	op_printer("p", stack_1->name);
+	if (stack_1->name == 'a' || stack_1->name == 'b')
+		op_printer("p", stack_1->name);
 }
