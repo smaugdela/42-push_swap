@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 09:34:09 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/29 10:48:48 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/29 11:18:15 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,35 +53,51 @@ static int	counter(int y, t_link *op, t_bool a)
 			--y;
 		if (y < 0)
 			return (0);
-		else if (y == 0 && op->next =! NULL)
+		else if ((y == 0) && (op->next =! NULL))
 		{
 			tmp = op->next->value;
-			if (tmp == 1 - a || tmp == 2 || tmp == 3 || tmp == 4
-				|| tmp == 6 - a || tmp == 8 - a || tmp == 10 - a)
+			if (tmp == (1 - a) || tmp == 2 || tmp == 3 || tmp == 4
+				|| tmp == (6 - a) || tmp == (8 - a) || tmp == (10 - a))
 				return (0);
 		}
 		op = op->next;
 	}
+	if (y == 0)
+		return (1);
+	else
+		return (0);
+}
+
+static t_bool	op_len(int value, t_link *start, size_t limit)
+{
+	int	counter;
+
+	while (start != NULL)
+	{
+		counter = 0;
+		while ((start != NULL) && (start->value == value))
+		{
+			++counter;
+			start = start->next;
+			if (counter > limit)
+				return (0);
+		}
+		start = start->next;
+	}
 	return (1);
 }
 
-static int	optimizer(t_stack *sol_pot)
+static int	optimizer(t_stack *sol_pot, size_t a)
 {
-	
-}
-
-static int	push_check(t_stack *sol_pot, size_t a)
-{
-	int		tmp;
-	t_link	*op;
-
-	op = sol_pot->list;
-	if (counter(a, op, 1) == 0)
+	if (op_len(7, sol_pot->list, a / 2) == 0)
 		return (0);
-	op = sol_pot->list;
-	if (counter(0, op, 0) == 0)
+	if (op_len(8, sol_pot->list, a / 2) == 0)
 		return (0);
-	return (optimizer(sol_pot));
+	if (op_len(9, sol_pot->list, a / 2) == 0)
+		return (0);
+	if (op_len(10, sol_pot->list, a / 2) == 0)
+		return (0);
+	return (1);
 }
 
 //Renvoi 1 pour OK, 0 pour KO.
@@ -96,5 +112,11 @@ int	ft_constraints(t_stack *sol_pot, size_t a)
 		if (comp_check(op->value, op->previous->value) == 0)
 			return (0);
 	}
-	return (push_check(sol_pot, a));
+	op = sol_pot->list;
+	if (counter(a, op, 1) == 0)
+		return (0);
+	op = sol_pot->list;
+	if (counter(0, op, 0) == 0)
+		return (0);
+	return (optimizer(sol_pot, a));
 }
