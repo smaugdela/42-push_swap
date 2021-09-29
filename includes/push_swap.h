@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:46:57 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/28 10:46:22 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/29 10:33:06 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_stack
 	t_link	*list;
 }	t_stack;
 
+typedef int8_t	t_bool;
+
 int		ft_error(int argc, char **argv);
 t_stack	*ft_init(char **argv, int len, char name);
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
@@ -46,7 +48,6 @@ void	double_s(t_stack *stack_1, t_stack *stack_2);
 void	double_r(t_stack *stack_1, t_stack *stack_2);
 void	double_rr(t_stack *stack_1, t_stack *stack_2);
 
-void	ft_backtracking(t_stack *a, t_stack *b);
-void	ft_printer(t_stack *stack_a, t_stack *stack_b);
+int		ft_backtracking(char **argv, int argc);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 09:34:09 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/28 12:09:51 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/29 10:48:48 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "backtracking.h"
 
-static int	comp_check (int x, int y)
+static int	comp_check(int x, int y)
 {
 	if (x == 2)
 		if (y == 2 || y == 5 || y == 6)
@@ -24,11 +24,11 @@ static int	comp_check (int x, int y)
 		if (y == 3 || y == 7 || y == 8)
 			return (0);
 	if ((x == 5 && y == 5) || (x == 5 && y == 2))
-			return (0);
+		return (0);
 	if ((x == 6 && y == 6) || (x == 6 && y == 2))
-			return (0);
+		return (0);
 	if ((x == 7 && y == 9) || (x == 7 && y == 4))
-			return (0);
+		return (0);
 	if (x == 8)
 		if (y == 10 || y == 4)
 			return (0);
@@ -41,25 +41,23 @@ static int	comp_check (int x, int y)
 	return (1);
 }
 
-static int	counter(int y, t_link *op)
+static int	counter(int y, t_link *op, t_bool a)
 {
-	int x;
-	int tmp;
+	int	tmp;
 
-	x = y;
 	while (op != NULL)
 	{
 		if (op->value == 0)
-			++x;
+			++y;
 		else if (op->value == 1)
-			--x;
-		if (x < 0)
+			--y;
+		if (y < 0)
 			return (0);
-		else if (x == 0 && op->next =! NULL)
+		else if (y == 0 && op->next =! NULL)
 		{
 			tmp = op->next->value;
-			if (tmp == 1 || tmp == 2 || tmp == 3 || tmp == 4 
-				|| tmp == 6 || tmp == 8 || tmp == 10)
+			if (tmp == 1 - a || tmp == 2 || tmp == 3 || tmp == 4
+				|| tmp == 6 - a || tmp == 8 - a || tmp == 10 - a)
 				return (0);
 		}
 		op = op->next;
@@ -67,25 +65,28 @@ static int	counter(int y, t_link *op)
 	return (1);
 }
 
+static int	optimizer(t_stack *sol_pot)
+{
+	
+}
+
 static int	push_check(t_stack *sol_pot, size_t a)
 {
-	int 	b;
 	int		tmp;
 	t_link	*op;
 
-	b = 0;
 	op = sol_pot->list;
-	if (counter(a, op) == 0)
+	if (counter(a, op, 1) == 0)
 		return (0);
 	op = sol_pot->list;
-	if (counter(b, op) == 0)
+	if (counter(0, op, 0) == 0)
 		return (0);
 	return (optimizer(sol_pot));
 }
 
+//Renvoi 1 pour OK, 0 pour KO.
 int	ft_constraints(t_stack *sol_pot, size_t a)
 {
-	//Renvoi 1 pour OK, 0 pour KO.
 	t_link	*op;
 
 	op = sol_pot->list;
