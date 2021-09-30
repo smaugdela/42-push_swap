@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 13:23:37 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 12:51:36 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 14:58:37 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	ft_add_operation(t_stack *sol_pot)
 	if (operation->previous != NULL)
 		operation->previous->next = operation;
 	sol_pot->len = sol_pot->len + 1;
+	sol_pot->list = lst_first(operation);
 }
 
 static t_stack	*ft_iter(t_stack *sol_pot)
@@ -34,10 +35,8 @@ static t_stack	*ft_iter(t_stack *sol_pot)
 		operation->value = operation->value + 1;
 	else
 	{
-		operation->value = 0;
 		while (operation != NULL)
 		{
-			operation = operation->previous;
 			if (operation->value < 10)
 			{
 				operation->value = operation->value + 1;
@@ -45,6 +44,7 @@ static t_stack	*ft_iter(t_stack *sol_pot)
 			}
 			else
 				operation->value = 0;
+			operation = operation->previous;
 		}
 		ft_add_operation(sol_pot);
 	}

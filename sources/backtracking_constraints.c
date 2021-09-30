@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 09:34:09 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 12:33:43 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 14:57:26 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ static int	counter(int y, t_link *op, t_bool a)
 		}
 		op = op->next;
 	}
-	if (y == 0)
+	if ((y == 0) && (a == 0))
+		return (1);
+	else if ((y != 0) && (a == 1))
 		return (1);
 	else
 		return (0);
@@ -82,7 +84,8 @@ static t_bool	op_len(int value, t_link *start, int limit)
 			if (counter > limit)
 				return (0);
 		}
-		start = start->next;
+		if (start != NULL)
+			start = start->next;
 	}
 	return (1);
 }
