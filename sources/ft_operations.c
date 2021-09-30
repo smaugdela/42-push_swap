@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 11:30:20 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/28 08:59:08 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 15:25:40 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	op_printer(char *op, char name)
 {
 	ft_putstr_fd(op, 1);
-	write(1, &name, 1);
+	if (name != '\0')
+		write(1, &name, 1);
 	write(1, "\n", 1);
 }
 

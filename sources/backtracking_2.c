@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 12:12:55 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 13:49:32 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 15:58:42 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,12 @@ int	ft_execute(t_stack *sol, char **argv, int argc)
 		liberator(a, NULL);
 		return (42);
 	}
-	ft_print_stacks(a, b);
 	operation = sol->list;
 	while (operation != NULL)
 	{
 		associator(operation->value, a, b);
 		operation = operation->next;
 	}
-	ft_print_stacks(a, b);
 	liberator(a, b);
 	liberator(sol, NULL);
 	return (0);
