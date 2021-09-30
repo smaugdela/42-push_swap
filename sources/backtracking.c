@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 13:23:37 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/29 10:45:57 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:12:49 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,10 +136,11 @@ int	ft_backtracking(char **argv, int argc)
 		if (ft_submit(c, d, sol_pot) == 1)
 		{
 			liberator(c, d);
-			ft_execute(sol_pot);
+			ft_execute(sol_pot, argv, argc);
 			return (0);
 		}
 		liberator(c, d);
 	}
 	liberator(c, d);
+	return (42);
 }
