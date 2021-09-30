@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:34:02 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/28 09:00:00 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 16:19:16 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,26 @@ void	liberator(t_stack *stack_a, t_stack *stack_b)
 
 	if (stack_a != NULL)
 	{
+		stack_a->list = lst_first(stack_a->list);
 		while (stack_a->list != NULL)
 		{
 			next_link = stack_a->list->next;
 			free(stack_a->list);
 			stack_a->list = next_link;
 		}
+		free(stack_a);
 	}
 	if (stack_b != NULL)
 	{
+		stack_b->list = lst_first(stack_b->list);
 		while (stack_b->list != NULL)
 		{
 			next_link = stack_b->list->next;
 			free(stack_b->list);
 			stack_b->list = next_link;
 		}
+		free(stack_b);
 	}
-	free(stack_a);
-	free(stack_b);
 }
 
 void	double_s(t_stack *stack_1, t_stack *stack_2)

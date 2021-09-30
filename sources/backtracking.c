@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 13:23:37 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 14:58:37 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 16:25:54 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,16 @@ static t_stack	*ft_gen_sol(size_t lim, t_stack *sol_pot, t_stack *c)
 		if (ft_constraints(sol_pot, c->len) == 1)
 			return (sol_pot);
 	}
-	free (sol_pot);
+	liberator(sol_pot, NULL);
 	return (NULL);
 }
 
 static int	ft_backtracking_aux(t_stack *c, t_stack *d, t_stack **sol_pot)
 {
 	*sol_pot = ft_gen_sol(c->len * K, *sol_pot, c);
-	if ((*sol_pot)->list == NULL)
+	if (sol_pot == NULL)
+		return (42);
+	else if ((*sol_pot)->list == NULL)
 	{
 		liberator(*sol_pot, NULL);
 		liberator(c, d);
@@ -94,16 +96,19 @@ int	ft_backtracking(char **argv, int argc)
 	{
 		c = ft_init(argv, argc - 1, 'c');
 		if (c == NULL)
+		{
+			liberator(sol_pot, NULL);
 			return (42);
+		}
 		d = ft_init(NULL, 0, 'd');
 		if (d == NULL)
 		{
-			liberator(c, NULL);
+			liberator(c, sol_pot);
 			return (42);
 		}
 		if (ft_backtracking_aux(c, d, &sol_pot) == 0)
 			return (ft_execute(sol_pot, argv, argc));
 	}
-	liberator(c, d);
+	liberator(sol_pot, NULL);
 	return (42);
 }
