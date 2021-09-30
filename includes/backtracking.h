@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:33:40 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 12:13:18 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:39:45 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 //Constante pour complexite limite K * n
 # define K 16
 
-int		ft_submit(t_stack *c, t_stack *d, t_stack *sol_pot);
-void	ft_execute(t_stack *sol_pot, char **argv, int argc);
-int		ft_constraints(t_stack *sol_pot, size_t a);
+int	ft_submit(t_stack *c, t_stack *d, t_stack *sol_pot);
+int	ft_execute(t_stack *sol_pot, char **argv, int argc);
+int	ft_constraints(t_stack *sol_pot, size_t a);
 
 #endif

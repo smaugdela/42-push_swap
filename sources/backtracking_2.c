@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 12:12:55 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 12:22:36 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:29:59 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_submit(t_stack *c, t_stack *d, t_stack *sol_pot)
 
 //Lit chaque int de sol et execute l'operation associee.
 //L'association du int et de l'operation est la meme que dans ft_submit.
-void	ft_execute(t_stack *sol, char **argv, int argc)
+int	ft_execute(t_stack *sol, char **argv, int argc)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -85,4 +85,5 @@ void	ft_execute(t_stack *sol, char **argv, int argc)
 	}
 	liberator(a, b);
 	liberator(sol, NULL);
+	return (0);
 }

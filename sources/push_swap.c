@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/29 10:37:22 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:25:29 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 		return (42);
 	if (argc <= 2)
 		return (0);
+	ret = 42;
 	a = ft_init(argv, argc - 1, 'a');
 	if (a == NULL)
 		return (42);

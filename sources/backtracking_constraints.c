@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 09:34:09 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/29 11:18:15 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:33:43 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	counter(int y, t_link *op, t_bool a)
 			--y;
 		if (y < 0)
 			return (0);
-		else if ((y == 0) && (op->next =! NULL))
+		else if ((y == 0) && (op->next != NULL))
 		{
 			tmp = op->next->value;
 			if (tmp == (1 - a) || tmp == 2 || tmp == 3 || tmp == 4
@@ -68,7 +68,7 @@ static int	counter(int y, t_link *op, t_bool a)
 		return (0);
 }
 
-static t_bool	op_len(int value, t_link *start, size_t limit)
+static t_bool	op_len(int value, t_link *start, int limit)
 {
 	int	counter;
 
