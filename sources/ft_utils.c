@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:34:02 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 16:19:16 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/02 15:57:28 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	double_s(t_stack *stack_1, t_stack *stack_2)
 	t_link	*link;
 	int		tmp;
 
-	if (stack_1->len <= 1 || stack_2->len <= 1)
+	if (stack_1->len <= 1 || stack_2->len <= 1 
+		|| stack_1->list == NULL || stack_2->list == NULL)
 	{
 		s(stack_1);
 		s(stack_2);
@@ -94,7 +95,8 @@ void	double_r(t_stack *stack_1, t_stack *stack_2)
 {
 	t_link	*link;
 
-	if (stack_1->len < 2 || stack_2->len < 2)
+	if (stack_1->len < 2 || stack_2->len < 2
+		|| stack_1->list == NULL || stack_2->list == NULL)
 	{
 		r(stack_1);
 		r(stack_2);
@@ -120,7 +122,8 @@ void	double_rr(t_stack *stack_1, t_stack *stack_2)
 {
 	t_link	*link;
 
-	if (stack_1->len < 2 || stack_2->len < 2)
+	if (stack_1->len < 2 || stack_2->len < 2
+		|| stack_1->list == NULL || stack_2->list == NULL)
 	{
 		rr(stack_1);
 		rr(stack_2);

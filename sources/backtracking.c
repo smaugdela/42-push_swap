@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 13:23:37 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 16:25:54 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/02 17:12:26 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,22 @@ static t_stack	*ft_gen_sol(size_t lim, t_stack *sol_pot, t_stack *c)
 {
 	if (sol_pot->list == NULL)
 		ft_add_operation(sol_pot);
+
 	while (sol_pot->len <= lim)
 	{
 		sol_pot = ft_iter(sol_pot);
 		if (ft_constraints(sol_pot, c->len) == 1)
 			return (sol_pot);
 	}
+
+/*
+	c->len = c->len;
+	if (sol_pot->len <= lim)
+	{
+		sol_pot = ft_iter(sol_pot);
+		return (sol_pot);
+	}
+*/
 	liberator(sol_pot, NULL);
 	return (NULL);
 }
@@ -82,6 +92,7 @@ static int	ft_backtracking_aux(t_stack *c, t_stack *d, t_stack **sol_pot)
 		liberator(c, d);
 		return (0);
 	}
+	liberator(c, d);
 	return (42);
 }
 

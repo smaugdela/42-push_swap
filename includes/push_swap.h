@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:46:57 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/30 16:34:05 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/02 17:11:28 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "libft.h"
 # include "stdint.h"
-
-# include "stdio.h" //Attention
 
 typedef struct s_link
 {
