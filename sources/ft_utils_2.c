@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:44:06 by smagdela          #+#    #+#             */
-/*   Updated: 2021/09/29 10:21:31 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/03 13:20:00 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ int	ft_is_sorted(t_stack *stack)
 {
 	t_link	*link;
 
+	if (stack == NULL)
+		return (0);
+	if (stack->list == NULL)
+		return (1);
 	link = stack->list;
 	while (link->next != NULL)
 	{
