@@ -6,34 +6,12 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 12:27:49 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/05 15:05:08 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:55:43 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "quicksort.h"
 
-static int	median_finder(t_stack *stack)
-{
-	
-}
-
-static int	ft_is_rev_sorted(t_stack *stack)
-{
-	t_link	*link;
-
-	if (stack == NULL)
-		return (0);
-	if (stack->list == NULL)
-		return (1);
-	link = stack->list;
-	while (link->next != NULL)
-	{
-		if (link->value <= link->next->value)
-			return (0);
-		link = link->next;
-	}
-	return (1);
-}
 
 int quicksort_a(t_stack *a)
 {
