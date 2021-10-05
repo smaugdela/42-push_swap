@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/02 15:29:12 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:44:16 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,27 @@ https://www.jesuisundev.com/comprendre-les-algorithmes-de-tri-en-7-minutes/
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	int		ret;
 
 	if (ft_error(argc, argv))
 		return (42);
 	if (argc <= 2)
 		return (0);
-	ret = 42;
 	a = ft_init(argv, argc - 1, 'a');
 	if (a == NULL)
 		return (42);
-	else if (ft_is_sorted(a) == 0)
-	{
-		ret = ft_backtracking(argv, argc);
+	else if (ft_is_sorted(a) == 1)
+	{	
+		liberator(a, NULL);
+		return(0);
 	}
-	liberator(a, NULL);
-	return (ret);
+	else if (a->len <= 5)
+	{
+		liberator(a, NULL);
+		return (ft_backtracking(argv, argc));
+	}
+	else
+	{
+		return (quicksort_a(a));
+	}
+	return (0);
 }

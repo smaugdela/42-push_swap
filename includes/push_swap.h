@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:46:57 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/02 17:11:28 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:30:54 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void	double_r(t_stack *stack_1, t_stack *stack_2);
 void	double_rr(t_stack *stack_1, t_stack *stack_2);
 
 int		ft_backtracking(char **argv, int argc);
+
+int		quicksort_a(t_stack *a);
 
 #endif
