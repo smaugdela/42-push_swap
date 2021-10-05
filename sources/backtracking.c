@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 13:23:37 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/03 13:56:48 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:37:56 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	ft_add_operation(t_stack *sol_pot)
 	t_link	*operation;
 
 	operation = (t_link *)malloc(1 * sizeof(t_link));
+	if (operation == NULL)
+		return ;
 	operation->previous = lst_last(sol_pot->list);
 	operation->next = NULL;
 	operation->value = 0;
