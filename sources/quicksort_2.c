@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:05:27 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/05 15:56:05 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/06 12:26:29 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,29 @@ static t_stack  *ft_clone(t_stack *stack)
     return (clone);
 }
 
-static void  patience_sort(t_stack *stack)
+static void  bubble_sort(t_stack *stack)
 {
-    
+    t_link  *link;
+    t_bool  sorted;
+    int     tmp;
+
+    sorted = 0;
+    while (sorted == 0)
+    {
+        link = stack->list;
+        sorted = 1;
+        while (link != NULL && link->next != NULL)
+        {
+            if (link->value > link->next->value)
+            {
+                tmp = link->value;
+                link->value = link->next->value;
+                link->next->value = tmp;
+                sorted = 0;
+            }
+            link = link->next;
+        }
+    }
 }
 
 int	median_finder(t_stack *stack)
@@ -56,7 +76,7 @@ int	median_finder(t_stack *stack)
     int     median;
 
     tmp_stack = ft_clone(stack);
-    patience_sort(tmp_stack);
+    bubble_sort(tmp_stack);
     med_index = (tmp_stack->len / 2) + (tmp_stack->len % 2);
     link = tmp_stack->list;
     while (--med_index)

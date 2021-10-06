@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/05 15:56:06 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/06 12:29:37 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int	main(int argc, char **argv)
 		return (ft_backtracking(argv, argc));
 	}
 	else
-	{
-		return (quicksort_a(a));
-	}
+		return (!quicksort_a(a));
 	return (0);
 }
