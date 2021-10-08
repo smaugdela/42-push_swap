@@ -6,13 +6,13 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:05:27 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/06 12:26:29 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:04:11 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "quicksort.h"
 
-static void	ft_add_link(t_stack *stack, int value)
+void	ft_add_link(t_stack *stack, int value)
 {
 	t_link	*link;
 

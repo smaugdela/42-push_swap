@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 12:27:49 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/06 17:34:51 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/08 17:14:36 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int quicksort_b(t_stack *b)
     {
 		while (b->len > 0)
 			p(a, b);
+	//	ft_print_stacks(a, b);
         liberator(a, b);
         return (1);
     }
@@ -32,6 +33,7 @@ static int quicksort_b(t_stack *b)
 		s(b);
 		while (b->len > 0)
 			p(a, b);
+	//	ft_print_stacks(a, b);
         liberator(a, NULL);
         return (1);
     }
@@ -50,6 +52,7 @@ static int quicksort_b(t_stack *b)
 	}
 	while (r_counter-- > 0)
 		rr(b);
+//	ft_print_stacks(a, b);
 	return (quicksort_a(a) && quicksort_b(b));
 }
 
@@ -60,18 +63,20 @@ int quicksort_a(t_stack *a)
     int     median;
 	int		r_counter;
 
+	b = ft_init(NULL, 0, 'b');
     if (ft_is_sorted(a) == 1)
     {
-        liberator(a, NULL);
+	//	ft_print_stacks(a, b);
+        liberator(a, b);
         return (1);
     }
 	else if (a->len == 2)
 	{
+	//	ft_print_stacks(a, b);
 		s(a);
-        liberator(a, NULL);
+        liberator(a, b);
         return (1);
     }
-    b = ft_init(NULL, 0, 'b');
     median = median_finder(a);
 	r_counter = 0;
 	stack_len = a->len;
@@ -80,10 +85,13 @@ int quicksort_a(t_stack *a)
 		if (a->list->value < median)
 			p(b, a);
 		else
+		{
 			r(a);
 			++r_counter;
+		}	
 	}
 	while (r_counter-- > 0)
 		rr(a);
+//	ft_print_stacks(a, b);
 	return (quicksort_a(a) && quicksort_b(b));
 }
