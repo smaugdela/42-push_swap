@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/08 17:28:08 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/08 18:42:49 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	{
 		solution = ft_init(NULL, 0, 's');
 		ret = !quicksort_a(a, &solution);
-		//ft_optimize(solution);
+		solution = ft_optimize(solution);
 		ft_execute(solution, argv, argc);
 	}
 	return (ret);
