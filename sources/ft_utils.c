@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:34:02 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/03 13:57:19 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/10 15:55:33 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_print_stacks(t_stack *stack_1, t_stack *stack_2)
 	ft_putstr_fd("\n\n\n", 1);
 }
 
-void	liberator(t_stack *stack_a, t_stack *stack_b)
+int	liberator(t_stack *stack_a, t_stack *stack_b)
 {
 	t_link	*next_link;
 
@@ -65,6 +65,7 @@ void	liberator(t_stack *stack_a, t_stack *stack_b)
 		}
 		free(stack_b);
 	}
+	return (1);
 }
 
 void	double_s(t_stack *stack_1, t_stack *stack_2)

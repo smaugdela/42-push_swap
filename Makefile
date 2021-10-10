@@ -6,7 +6,7 @@
 #    By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 18:52:14 by smagdela          #+#    #+#              #
-#    Updated: 2021/10/08 18:56:27 by smagdela         ###   ########.fr        #
+#    Updated: 2021/10/10 15:31:38 by smagdela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ ${NAME}:	${LIBFT} ${OBJS}
 	@echo "${GREEN}   ,'        '.    \  /"
 	@echo "${GREEN}   |  O        \___/  |"
 	@echo "${GREEN} ~^~^~^~^~^~^~^~^~^~^~^~^~\n"
-	@echo "${GREEN}Project Compilation Success!	\n"
+	@echo "${GREEN}Project Compilation Success!	${NC}\n"
 
 ${OBJD}%.o:	${SRCD}%.c ${LIBFT}
 	mkdir -p ${OBJD}

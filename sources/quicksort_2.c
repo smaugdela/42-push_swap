@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*																	          */
 /*                                                        :::      ::::::::   */
 /*   quicksort_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -17,8 +17,8 @@ void	ft_add_link(t_stack *stack, int value)
 	t_link	*link;
 
 	link = (t_link *)malloc(1 * sizeof(t_link));
-    if (link == NULL)
-        return ;
+	if (link == NULL)
+		return ;
 	link->previous = lst_last(stack->list);
 	link->next = NULL;
 	link->value = value;
@@ -28,62 +28,62 @@ void	ft_add_link(t_stack *stack, int value)
 	stack->list = lst_first(link);
 }
 
-static t_stack  *ft_clone(t_stack *stack)
+static t_stack	*ft_clone(t_stack *stack)
 {
-    t_stack *clone;
-    t_link  *link;
+	t_stack	*clone;
+	t_link	*link;
 
-    link = stack->list;
-    clone = ft_init(NULL, 0, stack->name);
-    while (link != NULL)
-    {
-        ft_add_link(clone, link->value);
-        link = link->next;
-    }
-    return (clone);
+	link = stack->list;
+	clone = ft_init(NULL, 0, stack->name);
+	while (link != NULL)
+	{
+		ft_add_link(clone, link->value);
+		link = link->next;
+	}
+	return (clone);
 }
 
-static void  bubble_sort(t_stack *stack)
+static void	bubble_sort(t_stack *stack)
 {
-    t_link  *link;
-    t_bool  sorted;
-    int     tmp;
+	t_link	*link;
+	t_bool	sorted;
+	int		tmp;
 
-    sorted = 0;
-    while (sorted == 0)
-    {
-        link = stack->list;
-        sorted = 1;
-        while (link != NULL && link->next != NULL)
-        {
-            if (link->value > link->next->value)
-            {
-                tmp = link->value;
-                link->value = link->next->value;
-                link->next->value = tmp;
-                sorted = 0;
-            }
-            link = link->next;
-        }
-    }
+	sorted = 0;
+	while (sorted == 0)
+	{
+		link = stack->list;
+		sorted = 1;
+		while (link != NULL && link->next != NULL)
+		{
+			if (link->value > link->next->value)
+			{
+				tmp = link->value;
+				link->value = link->next->value;
+				link->next->value = tmp;
+				sorted = 0;
+			}
+			link = link->next;
+		}
+	}
 }
 
 int	median_finder(t_stack *stack)
 {
-    t_stack *tmp_stack;
-    t_link  *link;
-    size_t  med_index;
-    int     median;
+	t_stack	*tmp_stack;
+	t_link	*link;
+	size_t	med_index;
+	int		median;
 
-    tmp_stack = ft_clone(stack);
-    bubble_sort(tmp_stack);
-    med_index = (tmp_stack->len / 2) + (tmp_stack->len % 2);
-    link = tmp_stack->list;
-    while (--med_index)
-        link = link->next;
-    median = link->value;
-    liberator(tmp_stack, NULL);
-    return (median);
+	tmp_stack = ft_clone(stack);
+	bubble_sort(tmp_stack);
+	med_index = (tmp_stack->len / 2) + (tmp_stack->len % 2);
+	link = tmp_stack->list;
+	while (--med_index)
+		link = link->next;
+	median = link->value;
+	liberator(tmp_stack, NULL);
+	return (median);
 }
 
 int	ft_is_rev_sorted(t_stack *stack)
@@ -103,4 +103,3 @@ int	ft_is_rev_sorted(t_stack *stack)
 	}
 	return (1);
 }
-

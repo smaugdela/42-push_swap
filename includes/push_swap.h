@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:46:57 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/08 18:23:32 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/10 15:52:08 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef int8_t	t_bool;
 int		ft_error(int argc, char **argv);
 t_stack	*ft_init(char **argv, int len, char name);
 void	ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
-void	liberator(t_stack *stack_a, t_stack *stack_b);
+int		liberator(t_stack *stack_a, t_stack *stack_b);
 t_link	*lst_last(t_link *link);
 t_link	*lst_first(t_link *list);
 int		ft_is_sorted(t_stack *stack);

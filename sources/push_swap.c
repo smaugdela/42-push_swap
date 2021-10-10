@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:01:42 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/08 18:42:49 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/10 15:55:42 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*solution;
-	int		ret;
 
 	if (ft_error(argc, argv))
 		return (42);
@@ -32,10 +31,7 @@ int	main(int argc, char **argv)
 	if (a == NULL)
 		return (42);
 	else if (ft_is_sorted(a) == 1)
-	{	
-		liberator(a, NULL);
-		return(0);
-	}
+		return (!liberator(a, NULL));
 	else if (a->len <= 5)
 	{
 		liberator(a, NULL);
@@ -44,9 +40,7 @@ int	main(int argc, char **argv)
 	else
 	{
 		solution = ft_init(NULL, 0, 's');
-		ret = !quicksort_a(a, &solution);
-		solution = ft_optimize(solution);
-		ft_execute(solution, argv, argc);
+		quicksort_a(a, &solution);
+		return (ft_execute(ft_optimize(solution), argv, argc));
 	}
-	return (ret);
 }

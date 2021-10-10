@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 18:55:43 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/08 19:04:50 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/10 15:40:36 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	doubled_op(int x, int y)
 	return (0);
 }
 
-static void bypass(t_link *link)
+static void	bypass(t_link *link)
 {
 	if (link->previous != NULL)
 		link->previous->next = link->next;
@@ -45,10 +45,36 @@ static void bypass(t_link *link)
 	free(link);
 }
 
+static t_bool	ft_optimize_aux(t_link *link, t_bool optimized)
+{
+	int		value;
+
+	while (link != NULL && link->next != NULL)
+	{
+		value = 0;
+		if (counter_op(link->value, link->next->value) == 1)
+		{
+			link = link->next;
+			bypass(link->previous);
+			bypass(link);
+			optimized = 0;
+		}
+		else
+			value = doubled_op(link->value, link->next->value);
+		if (value)
+		{
+			link->value = value;
+			bypass(link->next);
+			optimized = 0;
+		}
+		link = link->next;
+	}
+	return (optimized);
+}
+
 t_stack	*ft_optimize(t_stack *solution)
 {
 	t_link	*link;
-	int		value;
 	t_bool	optimized;
 
 	optimized = 0;
@@ -56,26 +82,7 @@ t_stack	*ft_optimize(t_stack *solution)
 	{
 		optimized = 1;
 		link = solution->list;
-		while (link != NULL && link->next != NULL)
-		{
-			value = 0;
-			if (counter_op(link->value, link->next->value) == 1)
-			{
-                link = link->next;
-				bypass(link->previous);
-				bypass(link);
-				optimized = 0;
-			}
-			else
-				value = doubled_op(link->value, link->next->value);
-			if (value)
-			{
-				link->value = value;
-				bypass(link->next);
-				optimized = 0;
-			}
-			link = link->next;
-		}
+		optimized = ft_optimize_aux(link, optimized);
 	}
 	solution->list = lst_first(link);
 	return (solution);
