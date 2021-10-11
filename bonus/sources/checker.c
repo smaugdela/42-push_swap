@@ -71,6 +71,7 @@ static int	ft_opfinder(char **op_list, char *op)
 	{
 		if (ft_strncmp(op_list[i], op, ft_strlen(op)) == 0)
 			return (i);
+		++i;
 	}
 	return (-1);
 }
@@ -80,7 +81,6 @@ int main(int argc, char **argv)
 	t_stack *a;
 	t_stack *b;
 	char	*line;
-	int		gnl_ret;
 	char	**op_list;
 
 	if (ft_error(argc, argv))
@@ -91,27 +91,33 @@ int main(int argc, char **argv)
 	b = ft_init(NULL, 0, 'd');
 	if (b == NULL)
 		return (42 * liberator(a, NULL));
-	gnl_ret = get_next_line(0, &line);
 	op_list = op_lister();
-	while (gnl_ret != -1 && ft_opfinder(op_list, line) != -1)
+	ft_print_stacks(a, b);
+	while (get_next_line(0, &line) > 0)
 	{
+		if (ft_opfinder(op_list, line) == -1)
+		{
+			ft_putstr_fd("Error\n", 2);
+			free(op_list);
+			free(line);
+			return (42 * liberator(a, b));
+		}
 		ft_execute_operation(ft_opfinder(op_list, line), a, b);
-		if (gnl_ret == 0)
-			break ;
-		else
-			gnl_ret = get_next_line(0, &line);
+		ft_print_stacks(a, b);
+		free(line);
 	}
-	if (gnl_ret == -1 || line == NULL || ft_opfinder(op_list, line) == -1)
+	if (line == NULL)
 	{
 		ft_putstr_fd("Error\n", 2);
 		free(op_list);
 		return (42 * liberator(a, b));
 	}
-	else if (ft_is_sorted(a) && b->len == 0)
+	if (ft_is_sorted(a) && b->len == 0)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
 	free(op_list);
+	free(line);
 	liberator(a, b);
 	return (0);
 }
