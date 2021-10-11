@@ -6,7 +6,7 @@
 #    By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 18:52:14 by smagdela          #+#    #+#              #
-#    Updated: 2021/10/11 13:52:29 by smagdela         ###   ########.fr        #
+#    Updated: 2021/10/11 16:03:43 by smagdela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,16 +63,13 @@ ${OBJD}%.o:	${SRCD}%.c
 ${LIBFT}:
 	${LIBFTMK} bonus
 
-test:
-	@echo "${BONUSOD}"
+bonus: ${LIBFT} ${OBJS} ${BONUSO}
+	${CC} ${CFLAG} ${BONUSO} ${filter-out ${OBJD}push_swap.o,${OBJS}} ${LIBFT} -o ${BONUS_NAME}
+	@echo ${WHALE}
 
 ${BONUSOD}%.o:	${BONUSSD}%.c
 	mkdir -p ${BONUSOD}
 	${CC} -c -o $@ ${CFLAGS} -I${INCD} -I${LIBFTD} $<
-
-bonus: ${LIBFT} ${OBJS} ${BONUSO}
-	${CC} ${CFLAG} ${BONUSO} ${LIBFT} -o ${BONUS_NAME}
-	@echo ${WHALE}
 
 clean:
 	-rm -rf ${OBJD} ${BONUSOD}

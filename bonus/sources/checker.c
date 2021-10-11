@@ -16,7 +16,7 @@ static char	**op_lister(void)
 {
 	char **list;
 
-	list = (char **)malloc(11 * sizeof(char*));
+	list = (char **)malloc(12 * sizeof(char*));
 	if (list == NULL)
 		return (NULL);
 	list[0] = "pb\n";
@@ -58,24 +58,8 @@ static void	ft_execute_operation(int index, t_stack *a, t_stack *b)
 		rr(a);
 	else if (index == 10)
 		rr(b);
-}
-
-static t_bool	op_is_valid(char *op, char **op_list)
-{
-	int	i;
-
-	i = 0;
-	while (op_list[i] != NULL && i < 12)
-	{
-		if (!ft_strncmp(op_list[i], op, ft_strlen(op)))
-		{
-			free(op_list);
-			return (1);
-		}
-		++i;
-	}
-	free(op_list);
-	return (0);
+	else
+		return ;
 }
 
 static int	ft_opfinder(char **op_list, char *op)
@@ -95,38 +79,39 @@ int main(int argc, char **argv)
 {
 	t_stack *a;
 	t_stack *b;
-	char	**line;
+	char	*line;
 	int		gnl_ret;
 	char	**op_list;
 
 	if (ft_error(argc, argv))
 		return (42);
-	a = ft_init(argv, argc - 1, 'a');
+	a = ft_init(argv, argc - 1, 'c');
 	if (a == NULL)
 		return (42);
-	b = ft_init(NULL, 0, 'b');
+	b = ft_init(NULL, 0, 'd');
+	if (b == NULL)
 		return (42 * liberator(a, NULL));
-	line = NULL;
-	gnl_ret = get_next_line(1, line);
+	gnl_ret = get_next_line(0, &line);
 	op_list = op_lister();
-	while ((gnl_ret == 1 || gnl_ret == 0) && (op_is_valid(*line, op_list)))
+	while (gnl_ret != -1 && ft_opfinder(op_list, line) != -1)
 	{
-		ft_execute_operation(ft_opfinder(op_list, *line), a, b);
+		ft_execute_operation(ft_opfinder(op_list, line), a, b);
 		if (gnl_ret == 0)
 			break ;
 		else
-			gnl_ret = get_next_line(1, line);
+			gnl_ret = get_next_line(0, &line);
 	}
-	if (gnl_ret == -1 || *line == NULL || !op_is_valid(*line, op_list))
+	if (gnl_ret == -1 || line == NULL || ft_opfinder(op_list, line) == -1)
 	{
 		ft_putstr_fd("Error\n", 2);
 		free(op_list);
-		return (42);
+		return (42 * liberator(a, b));
 	}
 	else if (ft_is_sorted(a) && b->len == 0)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
 	free(op_list);
+	liberator(a, b);
 	return (0);
 }
