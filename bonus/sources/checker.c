@@ -1,12 +1,12 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*		                                                                      */
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:44:18 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/11 12:15:16 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/11 12:22:01 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,27 +86,25 @@ static int	ft_opfinder(char **op_list, char *op)
 	while (i < 12 && op_list[i] != NULL)
 	{
 		if (ft_strncmp(op_list[i], op, ft_strlen(op)) == 0)
-		{
 			return (i);
-		}
 	}
 	return (-1);
 }
 
 int main(int argc, char **argv)
 {
-    t_stack *a;
-    t_stack *b;
+	t_stack *a;
+	t_stack *b;
 	char	**line;
 	int		gnl_ret;
 	char	**op_list;
 
-    if (ft_error(argc, argv))
+	if (ft_error(argc, argv))
 		return (42);
-    a = ft_init(argv, argc - 1, 'a');
-    if (a == NULL)
-        return (42);
-    b = ft_init(NULL, 0, 'b');
+	a = ft_init(argv, argc - 1, 'a');
+	if (a == NULL)
+		return (42);
+	b = ft_init(NULL, 0, 'b');
 		return (42 * liberator(a, NULL));
 	line = NULL;
 	gnl_ret = get_next_line(1, line);
@@ -119,15 +117,16 @@ int main(int argc, char **argv)
 		else
 			gnl_ret = get_next_line(1, line);
 	}
-	free(op_list);
 	if (gnl_ret == -1 || *line == NULL || !op_is_valid(*line, op_list))
 	{
 		ft_putstr_fd("Error\n", 2);
+		free(op_list);
 		return (42);
 	}
 	else if (ft_is_sorted(a) && b->len == 0)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
+	free(op_list);
 	return (0);
 }
