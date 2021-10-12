@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 18:55:43 by smagdela          #+#    #+#             */
-/*   Updated: 2021/10/10 15:40:36 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/12 17:40:22 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static t_bool	ft_optimize_aux(t_link *link, t_bool optimized)
 		value = 0;
 		if (counter_op(link->value, link->next->value) == 1)
 		{
-			link = link->next;
-			bypass(link->previous);
-			bypass(link);
+			link = link->previous;
+			bypass(link->next->next);
+			bypass(link->next);
 			optimized = 0;
 		}
 		else
@@ -67,7 +67,8 @@ static t_bool	ft_optimize_aux(t_link *link, t_bool optimized)
 			bypass(link->next);
 			optimized = 0;
 		}
-		link = link->next;
+		if (link != NULL)
+			link = link->next;
 	}
 	return (optimized);
 }

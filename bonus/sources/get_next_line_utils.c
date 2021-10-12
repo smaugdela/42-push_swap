@@ -6,7 +6,7 @@
 /*   By: smagdela <smagdela@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 12:03:52 by smagdela          #+#    #+#             */
-/*   Updated: 2021/06/10 14:28:48 by smagdela         ###   ########.fr       */
+/*   Updated: 2021/10/12 16:14:54 by smagdela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_endofline(int read_buffer, char *buffer)
 	return (0);
 }
 
-size_t	ft_strlen (const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
